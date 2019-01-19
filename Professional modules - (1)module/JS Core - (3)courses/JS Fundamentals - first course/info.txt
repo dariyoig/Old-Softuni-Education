@@ -1,0 +1,1 @@
+In this course "JS Fundamentals" we are introduced to DOM and methods that are used for maniplulating it!
