@@ -1,4 +1,4 @@
 function solve(){
-  //TODO
+  console.log(`This is a test`);
   
 }
