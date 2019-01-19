@@ -33,7 +33,5 @@ function solve() {
         check = 0;
       }
     }
-
   }
-
 }
