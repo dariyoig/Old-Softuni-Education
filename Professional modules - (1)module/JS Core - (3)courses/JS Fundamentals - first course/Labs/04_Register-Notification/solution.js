@@ -1,27 +1,32 @@
 function register() {
-  let username = document.getElementById('username').value;
-  let email = document.getElementById('email').value;
-  let password = document.getElementById('password').value;
+  let usernameElement = document.getElementById('username');
+  let username = usernameElement.value;
+  let passwordElement = document.getElementById('password');
+  let password = passwordElement.value;
+  let emailElement = document.getElementById('email');
+  let email = emailElement.value;
+  let resultElement = document.getElementById('result');
+  let emailRegex = /(.+)@(.+).(com|bg)/gm;
 
-  let regex = /(.+)@(.+).(com|bg)/gm;
+  if (email.match(emailRegex) && username !== '' && password !== '') {
+  
+  let h1Element = document.createElement('h1');
+          h1Element.textContent = 'Successful Registration!';
 
-  let isEmailValid = regex.test(email);
+          resultElement.appendChild(h1Element);
+          resultElement.innerHTML += `Username: ${username}`;
+          resultElement.appendChild(document.createElement('br'));
+          resultElement.innerHTML += `Email: ${email}`;
+          resultElement.appendChild(document.createElement('br'));
+          resultElement.innerHTML += `Password: ${('*').repeat(password.length)}`;
 
-  if (isEmailValid && username.length > 0 && password.length > 0) {
-    let cryptoPassword = `Password: ${'*'.repeat(password.length)}`;
-    let result = document.getElementById('result');
-    let heading = document.createElement('h1');
-    let usernameMsg = `Username: ${username}`;
-    let emailMsg = `Email: ${email}`;
-    heading.innerText = `Successful Registration!`;
-
-    result.appendChild(heading);
-    result.insertAdjacentHTML('beforeend', `${usernameMsg}`);
-    result.insertAdjacentHTML('beforeend', '<br>');
-    result.insertAdjacentHTML('beforeend', `${emailMsg}`);
-    result.insertAdjacentHTML('beforeend', `<br>`);
-    result.insertAdjacentHTML('beforeend', `${cryptoPassword}`);
-
+          usernameElement.value = '';
+          emailElement.value = '';
+          passwordElement.value = '';
+    
+    
+      setTimeout(() => {
+          resultElement.innerHTML = '';
+      }, 5000);
   }
-
 }

@@ -21,6 +21,4 @@ function solve() {
 	let textClear = document.getElementById('createContent');
 	titleClear.value = "";
 	textClear.value = "";
-
-
 }
