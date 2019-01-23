@@ -1,9 +1,9 @@
 function solve() {
     Array.from(document.getElementsByTagName('button')).forEach((el) => {
-        el.addEventListener('click', show);
+        el.addEventListener('click', func);
     })
 
-    function show(e) {
+    function func(e) {
         let parent = e.target.parentNode;
         let input = parent.getElementsByTagName('input')[0];
         let hiddenDiv = parent.getElementsByTagName('div')[1];
