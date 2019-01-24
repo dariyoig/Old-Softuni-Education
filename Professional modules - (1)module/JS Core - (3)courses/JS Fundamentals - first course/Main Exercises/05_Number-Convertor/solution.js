@@ -4,8 +4,8 @@ function solve() {
     binaryOption.textContent = "Binary";
     binaryOption.setAttribute("selected", "");
     let hexaOption = document.createElement('option');
-    hexaOption.value = "hexa";
-    hexaOption.textContent = "Hexademical";
+    hexaOption.value = "hexadecimal";
+    hexaOption.textContent = "Hexadecimal";
 
     let menu = document.getElementById('selectMenuTo');
 
