@@ -1,13 +1,9 @@
 function solve(input) {
-    let rotations = Number(input.pop());
-
-    console.log(arrayRotate(input, rotations).join(" "));
-
-    function arrayRotate(arr, count) {
-        count -= arr.length * Math.floor(count / arr.length)
-        arr.push.apply(arr, arr.splice(0, count))
-        return arr
+    let rotations = +input.pop()  
+    for(let i = 0; i < rotations % input.length; i++){
+        input.unshift(input.pop());
     }
+    console.log(input.join(' '));
 }
 solve(
     ['Banana',
