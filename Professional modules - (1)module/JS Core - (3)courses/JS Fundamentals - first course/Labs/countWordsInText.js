@@ -1,5 +1,5 @@
 function solve(input) {
-    input = input.join()
+    input = input.join();
     let arr = input.match(/[A-Za-z_]+/g);
     let obj = {};
     arr.forEach(element => {
