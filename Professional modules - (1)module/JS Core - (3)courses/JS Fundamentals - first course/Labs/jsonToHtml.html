@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FromJSONToHTMLTable</title>
+    <style>
+        table,
+        th {
+            border: groove;
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid black;
+        }
+
+        td,
+        th {
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+    </div>
+    <script>
+        function fromJSONToHTMLTable(input) {
+            let arr = JSON.parse(input);
+            let table = "<table>"
+            let firstObj = arr[0];
+
+            table += "\n<tr>"
+            for (const key in firstObj) {
+                table += `<th>${key}</th>` 
+            }
+            table += "</tr>"+"\n"
+
+            arr.forEach(el => {
+                let values = Object.values(el);
+                table += `<tr>`
+                for (let i = 0; i < values.length; i++){
+                    let currentValue = values[i];
+                    if (isNaN(currentValue)) {
+                        table += `<td>${escapeHtml(values[i])}</td>`
+                    }else {
+                        table += `<td>${values[i]}</td>`
+                    }
+                }
+                table += `</tr>\n`
+            });
+
+            table += '</table>';
+
+            return table;
+
+            function escapeHtml(unsafe) {
+                return unsafe
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#39;");
+            }
+        }
+        window.onload = function () {
+            let container = document.getElementById('wrapper');
+            container.innerHTML = fromJSONToHTMLTable(['[{"Name":"Pesho <div>-a","Age":20,"City":"Sofia"},{"Name":"Pesho <div>-a","Age":20,"City":"Sofia"},{"Name":"Pesho <div>-a","Age":20,"City":"Sofia"},{"Name":"Pesho <div>-a","Age":20,"City":"Sofia"},{"Name":"Pesho <div>-a","Age":20,"City":"Sofia"},{"Name":"Pesho <div>-a","Age":20,"City":"Sofia"},{"Name":"Pesho <div>-a","Age":20,"City":"Sofia"},{"Name":"Pesho <div>-a","Age":20,"City":"Sofia"},{"Name":"Pesho <div>-a","Age":20,"City":"Sofia"},{"Name":"Pesho <div>-a","Age":20,"City":"Sofia"},{"Name":"Pesho <div>-a","Age":20,"City":"Sofia"},{"Name":"Pesho <div>-a","Age":20,"City":"Sofia"},{"Name":"Pesho <div>-a","Age":20,"City":"Sofia"},{"Name":"Pesho <div>-a","Age":20,"City":"Sofia"},{"Name":"Pesho <div>-a","Age":20,"City":"Sofia"},{"Name":"Pesho <div>-a","Age":20,"City":"Sofia"},{"Name":"Pesho <div>-a","Age":20,"City":"Sofia"},{"Name":"Pesho <div>-a","Age":20,"City":"Sofia"},{"Name":"Pesho <div>-a","Age":20,"City":"Sofia"},{"Name":"Gosho","Age":18,"City":"Plovdiv"},{"Name":"Angel","Age":18,"City":"Veliko Tarnovo"}]']);
+        };
+    </script>
+</body>
+
+</html>
