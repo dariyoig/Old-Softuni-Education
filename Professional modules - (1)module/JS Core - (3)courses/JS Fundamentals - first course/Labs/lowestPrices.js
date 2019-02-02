@@ -3,9 +3,7 @@ function solve(input) {
 
     for (let el of input) {
         let [city, product, price] = el.split(" | ");
-        if (obj.hasOwnProperty(product) && obj[product].includes(city)) {
-            
-        }else if (obj.hasOwnProperty(product)) {
+        if (obj.hasOwnProperty(product)) {
             let currentPrice = obj[product][0];
             if (+price < currentPrice) {
                 obj[product] = [+price, city]
