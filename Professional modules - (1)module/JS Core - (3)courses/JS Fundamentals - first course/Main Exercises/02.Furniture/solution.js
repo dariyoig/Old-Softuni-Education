@@ -76,36 +76,35 @@ function solve() {
   }
 }
 
-
 [
-  {
-    "name": "Wardrobe",
-    "img": "#",
-    "price": 160,
-    "decFactor": 0.8
-  },
-  {
-    "name": "Bed",
-    "img": "#",
-    "price": 2.80,
-    "decFactor": 5.80
-  },
-  {
-    "name": "Sofa",
-    "img": "#",
-    "price": 200,
-    "decFactor": 1.5
-  },
-  {
-    "name": "Wardrobe",
-    "img": "#",
-    "price": 160,
-    "decFactor": 0.8
-  },
-  {
-    "name": "Bed",
-    "img": "#",
-    "price": 2.80,
-    "decFactor": 5.80
-  }
+  {"name": "Sofa", "img": "https://res.cloudinary.com/maisonsdumonde/image/upload/q_auto,f_auto/w_200/img/grey-3-seater-sofa-bed-200-13-0-175521_9.jpg", "price": 150, "decFactor": 1.2},
+  {"name": "Sofa", "img": "https://res.cloudinary.com/maisonsdumonde/image/upload/q_auto,f_auto/w_200/img/grey-3-seater-sofa-bed-200-13-0-175521_9.jpg", "price": 150, "decFactor": 1.2}
 ]
+
+
+// [
+//   {
+//     "name": "Wardrobe",
+//     "img": "#",
+//     "price": 160,
+//     "decFactor": 0.8
+//   },
+//   {
+//     "name": "Bed",
+//     "img": "#",
+//     "price": 2.80,
+//     "decFactor": 5.80
+//   },
+//   {
+//     "name": "Sofa",
+//     "img": "#",
+//     "price": 200,
+//     "decFactor": 1.5
+//   },
+//   {
+//     "name": "Wardrobe",
+//     "img": "#",
+//     "price": 160,
+//     "decFactor": 0.8
+//   }
+// ]
