@@ -37,7 +37,7 @@ function solve() {
   function buyFurniture(e) {
     let textarea = document.querySelectorAll("textarea")[1];
     let arrayOfInputs = Array.from(document.querySelectorAll("input"));
-    let checkedInputs = arrayOfInputs.filter(x => x.checked)
+    let checkedInputs = arrayOfInputs.filter(x => x.checked);
     let items = [];
     let sum = 0;
     let facSum = 0;
@@ -57,16 +57,16 @@ function solve() {
       let decFacValue = paragraphs[2].textContent;
       let [, decFactor] = decFacValue.split(": ");
 
+      items.push(name)
       if (!items.includes(name)) {
-        items.push(name)
       }
       sum += +price;
       facSum += +decFactor;
     }
 
-    result += `Bought furniture: ${items.join(" ")}\n`;
+    result += `Bought furniture: ${items.join(", ")}\n`;
     result += `Total price: ${sum.toFixed(2)}\n`;
-    result += `Average decoration factor: ${(facSum/checkedInputs.length).toFixed(2)}\n`;
+    result += `Average decoration factor: ${(facSum / checkedInputs.length)}\n`;
 
     textarea.value += result;
   }

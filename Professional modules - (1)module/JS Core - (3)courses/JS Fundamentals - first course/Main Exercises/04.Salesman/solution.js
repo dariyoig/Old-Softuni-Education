@@ -56,6 +56,8 @@ function solve() {
 
   function getProfit(e) {
     textAreas[2].value += `Profit: ${profit.toFixed(2)}\n`;
-    loadArray.from(document.querySelectorAll("button")).map(x => x.disabled = true);
+    document.querySelector("button").removeEventListener("click", loadProducts);
+    document.querySelectorAll("#exercise button")[1].removeEventListener("click", buyProducts);
+    document.querySelectorAll("#exercise button")[2].removeEventListener("click", getProfit);
   }
 }
