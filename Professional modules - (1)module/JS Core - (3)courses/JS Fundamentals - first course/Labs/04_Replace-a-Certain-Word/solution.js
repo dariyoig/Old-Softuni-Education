@@ -1,14 +1,14 @@
 function solve() {
   let arr = JSON.parse(document.getElementById("arr").value);
   let replacer = document.getElementById("str").value;
-  let length = arr[0].slice(7);
-  let regex = new RegExp(arr[0].slice(7).toLowerCase());
+  let replacee = arr[0][2];
+  let regEx = new RegExp(replacee, "ig")
 
-  for(let el of arr){
-    let index = el.toLowerCase().indexOf(regex);
-    console.log(index);
-    console.log(length);
+  for (let el of arr) {
+    el = el.replace(regEx, replacer);
+    let resultEl = document.getElementById("result");
+    let p = document.createElement("p");
+    p.textContent = el;
+    resultEl.appendChild(p);
   }
-
-  console.log(arr);
 }
