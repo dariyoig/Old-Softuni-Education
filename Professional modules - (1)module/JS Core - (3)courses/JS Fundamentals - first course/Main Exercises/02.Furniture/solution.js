@@ -68,6 +68,6 @@ function solve() {
     result += `Total price: ${sum.toFixed(2)}\n`;
     result += `Average decoration factor: ${(facSum/checkedInputs.length).toFixed(2)}\n`;
 
-    textarea.textContent += result;
+    textarea.value += result;
   }
 }
