@@ -128,5 +128,5 @@ textarea {
 
 textarea:disabled {
     background-color: #dddddd;
-    resize: none;
+    
 }
