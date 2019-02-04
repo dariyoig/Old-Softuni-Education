@@ -2,13 +2,11 @@ function solve() {
   document.querySelector("button").addEventListener("click", generateFurniture);
   document.querySelector("button:last-child").addEventListener("click", buyFurniture);
 
-
-
   function generateFurniture(e) {
     let list = document.getElementById("furniture-list");
-    let arr = JSON.parse(document.querySelector("textarea").value);
+    let listOfFurniture = JSON.parse(document.querySelector("textarea").value);
 
-    for (let el of arr) {
+    for (let el of listOfFurniture) {
       let div = document.createElement("div");
       div.setAttribute("class", "furniture");
 
@@ -35,8 +33,6 @@ function solve() {
       list.appendChild(div);
     }
   }
-
-
 
   function buyFurniture(e) {
     let textarea = document.querySelectorAll("textarea")[1];
@@ -72,39 +68,6 @@ function solve() {
     result += `Total price: ${sum.toFixed(2)}\n`;
     result += `Average decoration factor: ${(facSum/checkedInputs.length).toFixed(2)}\n`;
 
-    textarea.textContent = result;
+    textarea.textContent += result;
   }
 }
-
-[
-  {"name": "Sofa", "img": "https://res.cloudinary.com/maisonsdumonde/image/upload/q_auto,f_auto/w_200/img/grey-3-seater-sofa-bed-200-13-0-175521_9.jpg", "price": 150, "decFactor": 1.2},
-  {"name": "Sofa", "img": "https://res.cloudinary.com/maisonsdumonde/image/upload/q_auto,f_auto/w_200/img/grey-3-seater-sofa-bed-200-13-0-175521_9.jpg", "price": 150, "decFactor": 1.2}
-]
-
-
-// [
-//   {
-//     "name": "Wardrobe",
-//     "img": "#",
-//     "price": 160,
-//     "decFactor": 0.8
-//   },
-//   {
-//     "name": "Bed",
-//     "img": "#",
-//     "price": 2.80,
-//     "decFactor": 5.80
-//   },
-//   {
-//     "name": "Sofa",
-//     "img": "#",
-//     "price": 200,
-//     "decFactor": 1.5
-//   },
-//   {
-//     "name": "Wardrobe",
-//     "img": "#",
-//     "price": 160,
-//     "decFactor": 0.8
-//   }
-// ]
