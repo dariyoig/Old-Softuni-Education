@@ -41,7 +41,7 @@ function solve() {
     let items = [];
     let sum = 0;
     let facSum = 0;
-    let result = "";
+    let count = 0;
 
     for (let el of checkedInputs) {
 
@@ -62,12 +62,12 @@ function solve() {
       }
       sum += +price;
       facSum += +decFactor;
+      count += 1;
     }
 
-    result += `Bought furniture: ${items.join(", ")}\n`;
-    result += `Total price: ${sum.toFixed(2)}\n`;
-    result += `Average decoration factor: ${(facSum / checkedInputs.length)}\n`;
+    textarea.value += `Bought furniture: ${items.join(", ")}\n`;
+    textarea.value += `Total price: ${sum.toFixed(2)}\n`;
+    textarea.value += `Average decoration factor: ${(facSum / checkedInputs.length)}`;
 
-    textarea.value += result;
   }
 }
