@@ -1,4 +1,6 @@
 function solve() {
   let array = JSON.parse(document.getElementById("arr").value);
-  console.log(array);
+  for(let user of array){
+    console.log(user.split(/[ ][a-z+]/g));
+  }
 }

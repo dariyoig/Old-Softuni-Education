@@ -31,33 +31,25 @@ function solve() {
   function buyProducts(e) {
 
     let order = JSON.parse(textAreas[1].value);
-    let result = "";
 
     for (let product of storage) {
-      if (product.name === order.name) {
-        if (product.quantity >= order.quantity) {
-          let boughtFor = 0;
-          product.quantity = product.quantity - order.quantity;
-          profit += order.quantity * product.price;
-          boughtFor = order.quantity * product.price;
-          result = `${order.quantity} ${order.name} sold for ${boughtFor}.\n`;
-          break;
-
-        } else {
-          result = "Cannot complete order.\n";
-        }
-      } else {
-        result = "Cannot complete order.\n";
+      if ((product.name === order.name) && (product.quantity >= order.quantity)) {
+        let boughtFor = 0;
+        product.quantity = product.quantity - order.quantity;
+        profit += order.quantity * product.price;
+        boughtFor = order.quantity * product.price;
+        textAreas[2].value += `${order.quantity} ${order.name} sold for ${boughtFor}.\n`;
+        return;
       }
     }
-    textAreas[2].value += result;
+    textAreas[2].value += "Cannot complete order.\n";
   }
 
 
   function getProfit(e) {
     textAreas[2].value += `Profit: ${profit.toFixed(2)}\n`;
-    document.querySelector("button").removeEventListener("click", loadProducts);
-    document.querySelectorAll("#exercise button")[1].removeEventListener("click", buyProducts);
-    document.querySelectorAll("#exercise button")[2].removeEventListener("click", getProfit);
+    document.getElementsByTagName('button')[0].removeEventListener('click', loadProducts);
+    document.getElementsByTagName('button')[1].removeEventListener('click', buyProducts);
+    document.getElementsByTagName('button')[2].removeEventListener('click', getProfit);
   }
 }

@@ -1,30 +1,27 @@
 function solve() {
-    Array.from(document.querySelectorAll(".product button")).forEach(el => el.addEventListener("click", addProduct));
-    document.querySelector("#exercise > button").addEventListener("click", buyProducts);
-
-    let list = [];
-    let sum = 0;
-
-    function addProduct(e) {
-        let parent = e.target.parentNode;
-        let product = parent.querySelectorAll("p")[0].textContent;
-        let priceValue = parent.querySelectorAll("p")[1].textContent;
-        let [, price] = priceValue.split(": ");
-        let result;
-
-        if (list.includes(product)) {
-            sum += +price;
-        }else{
-            list.push(product);
-            sum += +price;
+    let cart = [];
+    Array.from(document.getElementsByTagName('button')).forEach(b => b.addEventListener('click', triggerEvent));
+    let textArea = document.getElementsByTagName('textarea')[0];
+ 
+    function triggerEvent(e) {
+ 
+        let btn = e.target;
+        if (btn.textContent === 'Add to cart') {
+            let siblings = Array.from(btn.parentElement.children).filter(ch => ch.tagName === 'P');
+            let name = siblings[0].textContent;
+            // let price = parseFloat(siblings[1].textContent.split(': ')[1]);
+            let price = +(siblings[1].textContent.split(': ')[1]);
+            let obj = {
+                'name': name,
+                'price': price
+            }
+            cart.push(obj);
+            textArea.value += `Added ${name} for ${price.toFixed(2)} to the cart.\n`;
+        } else if (btn.textContent === 'Buy') {
+            let products = [...new Set(cart.map(x => x.name))];
+            let money = cart.reduce((acc,el) => {return acc+el.price}, 0.0);
+ 
+            textArea.value += `You bought ${products.join(', ')} for ${money.toFixed(2)}.\n`;
         }
-        result = `Added ${product} for ${price} to the cart.\n`;
-        let textarea = document.querySelector("#exercise > textarea");
-        textarea.textContent += result; 
-    }
-    function buyProducts(e) {
-        let result = `You bought ${list.join(", ")} for ${sum.toFixed(2)}.\n`
-        let textarea = document.querySelector("#exercise > textarea");
-        textarea.textContent += result; 
     }
 }
