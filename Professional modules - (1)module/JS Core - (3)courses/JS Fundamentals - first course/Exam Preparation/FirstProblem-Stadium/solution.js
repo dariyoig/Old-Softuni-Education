@@ -10,11 +10,11 @@ function solve() {
     }
     function checkSeat(e) {
         let output = document.getElementById("output");
-        let section = e.path[5].className;
         let button = e.target;
+        let section = button.parentNode.parentNode.parentNode.parentNode.parentNode.className;
         let seatNumber = e.target.textContent;
         let td = button.parentNode;
-        let index = [...td.parentNode.children].indexOf(td);
+        let index = td.cellIndex;
         let sectors = ["A", "B", "C"];
         if (!button.hasAttribute("style")) {
             button.style.backgroundColor = "rgb(255,0,0)";
