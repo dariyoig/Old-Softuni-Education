@@ -5,38 +5,25 @@ function solve() {
     let profit = 0;
     let numOfFans = 0;
     let prices = {
-        "Litex": {
-            "0": 10,
-            "1": 7,
-            "2": 5
-        },
-        "Levski": {
-            "0": 10,
-            "1": 7,
-            "2": 5
-        },
-        "VIP": {
-            "0": 25,
-            "1": 15,
-            "2": 10
-        }
+        "Litex": [10,7,5],
+        "Levski": [10,7,5],
+        "VIP": [25, 15,10] 
     }
     function checkSeat(e) {
-        let outputArea = document.getElementById("output");
+        let output = document.getElementsByTagName('textarea')[0];
         let section = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector("h2").textContent;
         let button = e.target;
         let seatNumber = e.target.textContent;
         let td = button.parentNode;
-        let index = [...td.parentNode.children].indexOf(td).toString();
+        let index = [...td.parentNode.children].indexOf(td);
         let sectors = ["A", "B", "C"];
-        if (button.hasAttribute("style")) {
-            outputArea.textContent += ` Seat ${seatNumber} in zone ${section} sector ${sectors[+index]} is unavailable.\n`
-        } else {
+        if (!button.hasAttribute("style")) {
             button.style.backgroundColor = "rgb(255,0,0)";
-            outputArea.textContent += ` Seat ${seatNumber} in zone ${section} sector ${sectors[+index]} was taken.\n`;
+            output.textContent += ` Seat ${seatNumber} in zone ${section} sector ${sectors[+index]} was taken.\n`;
             numOfFans++;
             profit += prices[section][index];
-            
+        } else {
+            output.textContent += ` Seat ${seatNumber} in zone ${section} sector ${sectors[+index]} is unavailable.\n`
         }
        
     }
