@@ -3,3 +3,6 @@ function solve(formatter) {
         return formatter(",", "$", true, value);
     }
 }
+
+//Short version 
+formatter => value => formatter(",", "$", true, value);
